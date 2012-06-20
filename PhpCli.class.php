@@ -65,7 +65,7 @@
                 //validate that the arguments passed in match what options are available
                 if (!$this->hasValidArguments())
                 {
-                    throw new PhpCliException("Invalid arguments provided.");
+                    throw new PhpCliException("Invalid arguments provided. Run with -h to see available arguments.");
                 }
             }
             else
@@ -96,6 +96,34 @@
             }
             else
             {
+                //did we get all the required arguments?
+                foreach ($this->options as $option)
+                {
+                    $arg_exists = true;
+                    
+                    if ((boolean)$option[2] === true)
+                    {
+                        $arg_exists = false;
+                        
+                        foreach ($this->arguments as $index => $argument)
+                        {
+                            if ($this->getArgKey($argument) == $option[0])
+                            {
+                                if ($this->getArgValue($option[0]) != '')
+                                {
+                                    $arg_exists = true;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if ($arg_exists === false)
+                    {
+                        return false;
+                    }
+                }
+                
+                //look for extra arguments
                 foreach ($this->arguments as $index => $argument)
                 {
                     if ($index > 0) //0 is the script
