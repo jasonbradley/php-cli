@@ -7,7 +7,7 @@
     $options = array(array('v', 'Verbose Message', false),
                      array('date', 'Date of Report (YYYY-MM-DD)', true));
     
-    $phpCli = new PhpCli($argv, $options, __FILE__);
+    $phpCli = new PhpCli($argv, $options);
     
     $phpCli->addDescription("This is an example script.");
     $phpCli->showHelp();
@@ -21,5 +21,4 @@
     echo "\r\nArg value for date? " . serialize($phpCli->getArgValue('date'));
     echo "\r\nArg value for notreal? " . serialize($phpCli->getArgValue('notreal'));
     echo "\r\n";
-     
     

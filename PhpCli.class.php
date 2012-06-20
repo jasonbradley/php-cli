@@ -1,5 +1,8 @@
 <?php
 
+    //Colors class does foreground/background colors for linux cli
+    require_once 'Colors.class.php';
+    
     class PhpCli
     {
 
@@ -24,16 +27,23 @@
          * @var Array 
          */
         protected $arguments = array();
+        
+        /**
+         * Instance of Color
+         */
+        protected $color = null;
 
         /**
          * @param array $arguments
          * @param array $options array([0] = Option, [1] = Description, [2] = Required)
          * @throws PhpCliException 
          */
-        public function __construct($arguments, $options = array(), $file)
+        public function __construct($arguments, $options = array())
         {
             $this->addOptions($options);
             $this->setArguments($arguments);
+            
+            $this->color = new Colors();
         }
 
         protected function setOptions(Array $options)
@@ -218,21 +228,21 @@
          */
         public function showHelp()
         {
-            echo self::NEW_LINE . 'Description of "' . $this->arguments[0] . '":';
-            echo self::NEW_LINE . $this->getDescription() . self::NEW_LINE;
+            echo $this->color->getColoredString(self::NEW_LINE . 'Description of "' . $this->arguments[0] . '":', 'light_green');
+            echo $this->color->getColoredString(self::NEW_LINE . $this->getDescription() . self::NEW_LINE, 'light_blue');
             
             $options = $this->getOptions();
 
             if (is_array($options))
             {
-                echo self::NEW_LINE . "Below are the options for this script: " . self::NEW_LINE . self::NEW_LINE;
+                echo $this->color->getColoredString(self::NEW_LINE . "Below are the options for this script: " . self::NEW_LINE . self::NEW_LINE, 'light_gray');
 
                 foreach ($options as $index => $option)
                 {
-                    echo ($index+1) . 
+                    echo $this->color->getColoredString(($index+1) . 
                          ". " . str_pad($option[0], 10, " ",STR_PAD_RIGHT) . "Description: " .
                          str_pad($option[1], 40," ", STR_PAD_RIGHT) . " Required: " . 
-                         ((isset($option[2]) && $option[2] === true) ? 'Yes' : 'No');
+                         ((isset($option[2]) && $option[2] === true) ? 'Yes' : 'No'), 'yellow');
                     echo self::NEW_LINE;
                 }
 
