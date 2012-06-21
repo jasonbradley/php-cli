@@ -2,8 +2,9 @@
 
     //Colors class does foreground/background colors for linux cli
     require_once 'Colors.class.php';
+    require_once 'PhpCliUtil.class.php';
     
-    class PhpCli
+    class PhpCli extends PhpCliUtil
     {
 
         /**
