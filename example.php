@@ -25,5 +25,3 @@
     
     echo "\r\n";
     echo $phpCli->printLine("This script is using ". $phpCli->getMemoryUsage() . " mb of memory.");
-    
-    

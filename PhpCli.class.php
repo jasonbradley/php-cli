@@ -246,7 +246,7 @@
         {
             if ($this->hasArg($arg))
             {
-                foreach ($this->arguments as $index => $argument)
+                foreach ($this->arguments as $argument)
                 {
                     if ($this->getArgKey($argument) == $arg)
                     {
@@ -269,7 +269,7 @@
          * Displays the description of the script and the 
          * options for running the script 
          */
-        public function showHelp()
+        protected function showHelp()
         {
             echo $this->color->getColoredString(self::NEW_LINE . 'Description of "' . $this->arguments[0] . '":', 'light_green');
             echo $this->color->getColoredString(self::NEW_LINE . $this->getDescription() . self::NEW_LINE, 'light_blue');
@@ -295,6 +295,8 @@
             {
                     echo self::NEW_LINE . "There are no options for this script." . self::NEW_LINE;
             }
+            
+            exit(); //kill the script since the user requested help
         }
         
         /**

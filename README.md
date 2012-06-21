@@ -3,10 +3,10 @@ php-cli
 
 A simple class to help make command line usage in PHP easier.
 
-
 > Example Usage: php example.php --date=2012-01-01
 
-
+Or with help output:
+> Example Usage: php example.php -h
 
 Copyright [2012] [Jason Bradley]
 
