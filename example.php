@@ -7,13 +7,10 @@
     $options = array(array('v', 'Verbose Message', false),
                      array('date', 'Date of Report (YYYY-MM-DD)', true));
     
-    $phpCli = new PhpCli($argv, $options);
+    $phpCli = new PhpCli($argv, $options, "This is an example script.");
     
-    $phpCli->addDescription("This is an example script.");
-    $phpCli->showHelp();
-
     echo "\r\nHas Option v? " . serialize($phpCli->hasArg('v'));
-    echo "\r\nHas Option date? " . serialize($phpCli->hasArg('v'));
+    echo "\r\nHas Option date? " . serialize($phpCli->hasArg('date'));
     echo "\r\nHas Option notreal? " . serialize($phpCli->hasArg('notreal'));
     echo "\r\n";
     

@@ -39,12 +39,19 @@
          * @param array $options array([0] = Option, [1] = Description, [2] = Required)
          * @throws PhpCliException 
          */
-        public function __construct($arguments, $options = array())
+        public function __construct($arguments, $options = array(), $description = '')
         {
+            $this->setDescription($description);
             $this->addOptions($options);
             $this->setArguments($arguments);
             
             $this->color = new Colors();
+            
+            //display help
+            if ($this->hasArg('h'))
+            {
+                $this->showHelp();
+            }
         }
 
         protected function setOptions(Array $options)
@@ -64,7 +71,7 @@
                 $this->arguments = $arguments;
                 
                 //validate that the arguments passed in match what options are available
-                if (!$this->hasValidArguments())
+                if (!$this->hasArg('h') && !$this->hasValidArguments())
                 {
                     throw new PhpCliException("Invalid arguments provided. Run with -h to see available arguments.");
                 }
@@ -100,27 +107,12 @@
                 //did we get all the required arguments?
                 foreach ($this->options as $option)
                 {
-                    $arg_exists = true;
-                    
                     if ((boolean)$option[2] === true)
                     {
-                        $arg_exists = false;
-                        
-                        foreach ($this->arguments as $index => $argument)
+                        if (!$this->hasArg($option[0]))
                         {
-                            if ($this->getArgKey($argument) == $option[0])
-                            {
-                                if ($this->getArgValue($option[0]) != '')
-                                {
-                                    $arg_exists = true;
-                                }
-                            }
+                            return false;
                         }
-                    }
-                    
-                    if ($arg_exists === false)
-                    {
-                        return false;
                     }
                 }
                 
@@ -140,6 +132,11 @@
             }
         }
         
+        protected function addHelpOption(&$options)
+        {
+            array_push($options, array('h','Displays Help',false));
+        }
+        
         /**
          * Add the options for the script
          * 
@@ -148,6 +145,9 @@
          */
         protected function addOptions(Array $options)
         {
+            //h should always be an option
+            $this->addHelpOption($options);
+            
             foreach ($options as $option)
             {
                 if (!is_array($option) || count($option) == 1)
@@ -187,6 +187,20 @@
             else
             {
                 $arg = $this->getArgKey($arg);
+                
+                $exists = false;
+                foreach ($this->arguments as $argument)
+                {
+                    if ($this->getArgKey($argument) == $arg)
+                    {
+                        $exists = true;
+                    }
+                }
+                
+                if (!$exists)
+                {
+                    return false;
+                }
                 
                 foreach ($this->options as $index => $option)
                 {
@@ -285,6 +299,7 @@
         
         /**
          * Outputs a message with optional foreground/background colors
+         * if -v is passed in to the script
          * 
          * @param string $msg
          * @param string $foreground_color
@@ -292,7 +307,8 @@
          */
         public function printLine($msg, $foreground_color = '', $background_color = '')
         {
-            if (trim($msg) == '')
+            //don't print if they don't have verbose message set
+            if ($this->hasArg('v') === false || trim($msg) == '')
             {
                 return;
             }
