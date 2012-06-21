@@ -26,4 +26,7 @@
     $phpCli->printLine("Messsage with no special color.");
     $phpCli->printLine("Messsage with special color.", 'blue', 'light_gray');
     
+    echo "\r\n";
+    echo $phpCli->printLine("This script is using ". $phpCli->getMemoryUsage() . " mb of memory.");
+    
     
