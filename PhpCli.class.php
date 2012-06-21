@@ -281,6 +281,33 @@
                     echo self::NEW_LINE . "There are no options for this script." . self::NEW_LINE;
             }
         }
+        
+        /**
+         * Outputs a message with optional foreground/background colors
+         * 
+         * @param string $msg
+         * @param string $foreground_color
+         * @param string $background_color 
+         */
+        public function printLine($msg, $foreground_color = '', $background_color = '')
+        {
+            if (trim($msg) == '')
+            {
+                return;
+            }
+            
+            if (in_array($foreground_color, $this->color->getForegroundColors()) === false)
+            {
+                $foreground_color = null;
+            }
+            
+            if (in_array($background_color, $this->color->getBackgroundColors()) === false)
+            {
+                $background_color = null;
+            }
+            
+            echo $this->color->getColoredString($msg, $foreground_color, $background_color) . self::NEW_LINE;
+        }
     }
 
     class PhpCliException extends Exception

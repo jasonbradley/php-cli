@@ -22,3 +22,8 @@
     echo "\r\nArg value for notreal? " . serialize($phpCli->getArgValue('notreal'));
     echo "\r\n";
     
+    echo "\r\n";
+    $phpCli->printLine("Messsage with no special color.");
+    $phpCli->printLine("Messsage with special color.", 'blue', 'light_gray');
+    
+    

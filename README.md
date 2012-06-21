@@ -4,7 +4,7 @@ php-cli
 A simple class to help make command line usage in PHP easier.
 
 
-
+> Example Usage: php example.php --date=2012-01-01
 
 
 
