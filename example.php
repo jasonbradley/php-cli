@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
     ini_set('display_errors', 1);
-
+    
     include('PhpCli.class.php');
 
     $options = array(array('v', 'Verbose Message', false),
@@ -25,3 +25,5 @@
     
     echo "\r\n";
     echo $phpCli->printLine("This script is using ". $phpCli->getMemoryUsage() . " mb of memory.");
+    
+    while(true);

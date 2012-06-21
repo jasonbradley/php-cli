@@ -9,16 +9,22 @@
 
         /**
          * New line characters 
+         * 
+         * @var String
          */
         const NEW_LINE = "\r\n";
 
         /**
          * List of options the script accepts
+         * 
+         * @var Array
          */
         protected $options = array();
 
         /**
          * Description of what the script should do
+         * 
+         * @var String
          */
         protected $description = '';
         
@@ -31,16 +37,28 @@
         
         /**
          * Instance of Color
+         * 
+         * @var String
          */
         protected $color = null;
 
         /**
+         * File pointer to file being locked
+         * 
+         * @var type 
+         */
+        private $lock;
+
+        /**
          * @param array $arguments
          * @param array $options array([0] = Option, [1] = Description, [2] = Required)
+         * @param string Script Description
          * @throws PhpCliException 
          */
         public function __construct($arguments, $options = array(), $description = '')
         {
+            $this->obtainLock($_SERVER['SCRIPT_FILENAME']);
+            
             $this->setDescription($description);
             $this->addOptions($options);
             $this->setArguments($arguments);
@@ -53,6 +71,24 @@
                 $this->showHelp();
             }
         }
+
+        /**
+         * Create a file lock to prevent running on top of
+         * another instance of the script
+         * 
+         * @param type $file 
+         */
+        protected function obtainLock($file)
+        {
+            // Don't run on top of another instance
+            $this->lock = fopen($file, 'r');
+            if ($this->lock === false || !flock($this->lock, LOCK_EX + LOCK_NB, $block) || $block) 
+            {
+                echo "Another instance is already running." . self::NEW_LINE;
+                exit(1);
+            }
+        }
+
 
         protected function setOptions(Array $options)
         {
@@ -93,7 +129,9 @@
         }
         
         /**
-         *
+         * Determines if the arguments passed in match
+         * what was expected in the list of options
+         * 
          * @returns boolean 
          */
         public function hasValidArguments()
