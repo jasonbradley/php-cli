@@ -3,6 +3,12 @@ php-cli
 
 A simple class to help make command line usage in PHP easier.
 
+Features:
+  1. Progress Bar
+  2. Display Memory Usage
+  3. Print text in various foreground/background colors
+
+
 > Example Usage: php example.php --date=2012-01-01
 
 Or with help output:
