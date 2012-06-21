@@ -43,13 +43,6 @@
         protected $color = null;
 
         /**
-         * File pointer to file being locked
-         * 
-         * @var type 
-         */
-        private $lock;
-
-        /**
          * @param array $arguments
          * @param array $options array([0] = Option, [1] = Description, [2] = Required)
          * @param string Script Description
@@ -71,24 +64,6 @@
                 $this->showHelp();
             }
         }
-
-        /**
-         * Create a file lock to prevent running on top of
-         * another instance of the script
-         * 
-         * @param type $file 
-         */
-        protected function obtainLock($file)
-        {
-            // Don't run on top of another instance
-            $this->lock = fopen($file, 'r');
-            if ($this->lock === false || !flock($this->lock, LOCK_EX + LOCK_NB, $block) || $block) 
-            {
-                echo "Another instance is already running." . self::NEW_LINE;
-                exit(1);
-            }
-        }
-
 
         protected function setOptions(Array $options)
         {
