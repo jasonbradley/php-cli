@@ -26,4 +26,14 @@
     echo "\r\n";
     echo $phpCli->printLine("This script is using ". $phpCli->getMemoryUsage() . " mb of memory.");
     
-    while(true);
+    echo "\r\n";
+    echo "Progress Bar Example:";
+    $phpCli->progressStart(50);
+    $i = 0;
+    while($i < 50)
+    {
+        $i++;
+        $phpCli->progressNext();
+        usleep(100000);
+    }
+    $phpCli->progressStop();
