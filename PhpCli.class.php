@@ -17,9 +17,9 @@
  */
 
     //Colors class does foreground/background colors for linux cli
-    require_once 'lib/Colors.class.php';
-    require_once 'lib/ProgressBar.class.php';
-    require_once 'PhpCliUtil.class.php';
+    require_once dirname(__FILE__).'/lib/Colors.class.php';
+    require_once dirname(__FILE__).'/lib/ProgressBar.class.php';
+    require_once dirname(__FILE__).'/PhpCliUtil.class.php';
     
     class PhpCli extends PhpCliUtil
     {
