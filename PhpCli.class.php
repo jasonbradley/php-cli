@@ -17,8 +17,8 @@
  */
 
     //Colors class does foreground/background colors for linux cli
-    require_once './lib/Colors.class.php';
-    require_once './lib/ProgressBar.class.php';
+    require_once 'lib/Colors.class.php';
+    require_once 'lib/ProgressBar.class.php';
     require_once 'PhpCliUtil.class.php';
     
     class PhpCli extends PhpCliUtil
@@ -167,6 +167,11 @@
             array_push($options, array('h','Displays Help',false));
         }
         
+        protected function addVerboseOption(&$options)
+        {
+            array_push($options, array('v','Show Verbose Messages',false));
+        }
+        
         /**
          * Add the options for the script
          * 
@@ -177,6 +182,9 @@
         {
             //h should always be an option
             $this->addHelpOption($options);
+            
+            //v should always be an option
+            $this->addVerboseOption($options);
             
             foreach ($options as $option)
             {
