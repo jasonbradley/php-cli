@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors',1);
-include('PhpCli.class.php');
+
+require_once(dirname(__FILE__).'/../PhpCli.class.php');
 
 class PhpCliTest extends PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,6 @@ class PhpCliTest extends PHPUnit_Framework_TestCase
     public function testHasArg()
     {
         $options = array(array('date', 'Date of Report (YYYY-MM-DD)', true));
-        
         array_push($this->testArgs, '--date=12345');
         
         $phpCli = new PhpCli($this->testArgs, $options, "This is an example script.");
@@ -26,7 +25,6 @@ class PhpCliTest extends PHPUnit_Framework_TestCase
     public function testGetArgValue()
     {
         $options = array(array('date', 'Date of Report (YYYY-MM-DD)', true));
-        
         array_push($this->testArgs, '--date=12345');
         
         $phpCli = new PhpCli($this->testArgs, $options, "This is an example script.");
@@ -37,14 +35,10 @@ class PhpCliTest extends PHPUnit_Framework_TestCase
     public function testPrintLineWithoutVerbose()
     {
         $options = array(array('date', 'Date of Report (YYYY-MM-DD)', true));
-        
         array_push($this->testArgs, '--date=12345');
         
         $phpCli = new PhpCli($this->testArgs, $options, "This is an example script.");
-        
-        ob_start();
-        $phpCli->printLine('I am printing a line.');
-        $output = ob_get_clean();
+        $output = $phpCli->returnLine('I am printing a line.');
         
         $this->assertEquals(null, $output);
     }
@@ -52,14 +46,10 @@ class PhpCliTest extends PHPUnit_Framework_TestCase
     public function testPrintLineWithVerbose()
     {
         $options = array();
-        
         array_push($this->testArgs, '-v');
         
         $phpCli = new PhpCli($this->testArgs, $options, "This is an example script.");
-        
-        ob_start();
-        $phpCli->printLine('I am printing a line.');
-        $output = ob_get_clean();
+        $output = $phpCli->returnLine('I am printing a line.');
         
         $this->assertRegExp("/\w.*\\r\\n/", $output);
     }
