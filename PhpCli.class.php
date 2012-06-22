@@ -347,6 +347,16 @@
          */
         public function printLine($msg, $foreground_color = '', $background_color = '')
         {
+            echo $this->formatLine($msg, $foreground_color, $background_color);
+        }
+
+        public function returnLine($msg, $foreground_color = '', $background_color = '')
+        {
+            return $this->formatLine($msg, $foreground_color, $background_color);
+        }
+
+        private function formatLine($msg, $foreground_color, $background_color)
+        {
             //don't print if they don't have verbose message set
             if ($this->hasArg('v') === false || trim($msg) == '')
             {
@@ -363,8 +373,9 @@
                 $background_color = null;
             }
             
-            echo $this->color->getColoredString($msg, $foreground_color, $background_color) . self::NEW_LINE;
+            return $this->color->getColoredString($msg, $foreground_color, $background_color) . self::NEW_LINE;
         }
+
     }
 
     class PhpCliException extends Exception
