@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors',1);
-include('PhpCli.class.php');
+
+require_once(dirname(__FILE__).'/../PhpCli.class.php');
 
 class PhpCliTest extends PHPUnit_Framework_TestCase
 {
