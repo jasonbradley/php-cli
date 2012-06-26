@@ -25,13 +25,6 @@
     {
 
         /**
-         * New line characters 
-         * 
-         * @var String
-         */
-        const NEW_LINE = "\r\n";
-
-        /**
          * List of options the script accepts
          * 
          * @var Array
@@ -309,14 +302,14 @@
          */
         protected function showHelp()
         {
-            echo $this->color->getColoredString(self::NEW_LINE . 'Description of "' . $this->arguments[0] . '":', 'light_green');
-            echo $this->color->getColoredString(self::NEW_LINE . $this->getDescription() . self::NEW_LINE, 'light_blue');
+            echo $this->color->getColoredString(PHP_EOL . 'Description of "' . $this->arguments[0] . '":', 'light_green');
+            echo $this->color->getColoredString(PHP_EOL . $this->getDescription() . PHP_EOL, 'light_blue');
             
             $options = $this->getOptions();
 
             if (is_array($options))
             {
-                echo $this->color->getColoredString(self::NEW_LINE . "Below are the options for this script: " . self::NEW_LINE . self::NEW_LINE, 'light_gray');
+                echo $this->color->getColoredString(PHP_EOL . "Below are the options for this script: " . PHP_EOL . PHP_EOL, 'light_gray');
 
                 foreach ($options as $index => $option)
                 {
@@ -326,14 +319,14 @@
                          ". " . str_pad($option[0], 10, " ",STR_PAD_RIGHT) . "Description: " .
                          str_pad($option[1], 40," ", STR_PAD_RIGHT) . " Required: " . 
                          ((isset($option[2]) && $option[2] === true) ? 'Yes' : 'No'), 'yellow');
-                    echo self::NEW_LINE;
+                    echo PHP_EOL;
                 }
 
-                echo self::NEW_LINE;
+                echo PHP_EOL;
             }
             else
             {
-                    echo self::NEW_LINE . "There are no options for this script." . self::NEW_LINE;
+                    echo PHP_EOL . "There are no options for this script." . PHP_EOL;
             }
             
             exit(); //kill the script since the user requested help
@@ -375,7 +368,7 @@
                 $background_color = null;
             }
             
-            return $this->color->getColoredString($msg, $foreground_color, $background_color) . self::NEW_LINE;
+            return $this->color->getColoredString($msg, $foreground_color, $background_color) . PHP_EOL;
         }
 
     }
