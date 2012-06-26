@@ -51,7 +51,7 @@ class PhpCliTest extends PHPUnit_Framework_TestCase
         $phpCli = new PhpCli($this->testArgs, $options, "This is an example script.");
         $output = $phpCli->returnLine('I am printing a line.');
         
-        $this->assertRegExp("/\w.*\\r\\n/", $output);
+        $this->assertRegExp("/\w.*\\n/", $output);
     }
     
     /**

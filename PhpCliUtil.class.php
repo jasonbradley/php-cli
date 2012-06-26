@@ -43,7 +43,7 @@
             $this->lock = fopen($file, 'r');
             if ($this->lock === false || !flock($this->lock, LOCK_EX + LOCK_NB, $block) || $block) 
             {
-                throw new PhpCliException("Another instance is already running." . PhpCli::NEW_LINE);
+                throw new PhpCliException("Another instance is already running." . PHP_EOL);
                 exit(1);
             }
         }
