@@ -1,0 +1,17 @@
+{
+    "name": "php-cli/php-cli",
+    "description": "A simple command-line interface (CLI) helper for PHP.",
+    "keywords": ["cli","command-line"],
+    "homepage": "http://github.com/thebra/php-cli",
+    "type": "library",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Jason Bradley",
+            "email": "jason.bradley@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.0"
+    }
+}
