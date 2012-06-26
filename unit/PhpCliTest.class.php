@@ -53,4 +53,16 @@ class PhpCliTest extends PHPUnit_Framework_TestCase
         
         $this->assertRegExp("/\w.*\\r\\n/", $output);
     }
+    
+    /**
+     * @expectedException PhpCliException
+     */
+    public function testFlockThrowsException()
+    {
+        $options = array();
+        array_push($this->testArgs, '-v');
+        
+        $phpCli = new PhpCli($this->testArgs, $options, "This is an example script.");        
+        $phpCli = new PhpCli($this->testArgs, $options, "This is an example script.");
+    }
 }
