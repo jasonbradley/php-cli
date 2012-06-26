@@ -320,6 +320,8 @@
 
                 foreach ($options as $index => $option)
                 {
+                    //show the number of "-"
+                    $option[0] = ((strlen($option[0]) == 1) ? '-' : '--') . $option[0];
                     echo $this->color->getColoredString(($index+1) . 
                          ". " . str_pad($option[0], 10, " ",STR_PAD_RIGHT) . "Description: " .
                          str_pad($option[1], 40," ", STR_PAD_RIGHT) . " Required: " . 
