@@ -10,7 +10,7 @@ Features:
   4. Prompt for input from the user
 
 
-> Example Usage: php example.php --date=2012-01-01
+> Example Usage: php example.php --date=2012-01-01 -v
 
 Or with help output:
 > Example Usage: php example.php -h
