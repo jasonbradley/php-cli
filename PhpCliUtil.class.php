@@ -77,4 +77,18 @@
         {
             echo ProgressBar::finish();
         }
+        
+        /**
+         * Get input from a user
+         * 
+         * @param  string $message
+         * @return string 
+         */
+        public function promptInput($message)
+        {
+            fwrite(STDOUT, "$message: ");
+            $input = trim(fgets(STDIN));
+            
+            return $input;
+        }
     }
