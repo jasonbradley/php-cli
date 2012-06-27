@@ -7,6 +7,7 @@ Features:
   1. Progress Bar
   2. Display Memory Usage
   3. Print text in various foreground/background colors
+  4. Prompt for input from the user
 
 
 > Example Usage: php example.php --date=2012-01-01
