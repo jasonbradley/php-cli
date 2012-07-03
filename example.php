@@ -24,7 +24,7 @@
     $phpCli->printLine("Messsage with special color.", 'blue', 'light_gray');
     
     echo "\r\n";
-    echo $phpCli->printLine("This script is using ". $phpCli->getMemoryUsage() . " of memory.");
+    $phpCli->printLine("This script is using ". $phpCli->getMemoryUsage() . " of memory.");
     
     echo "\r\n";
     echo "Progress Bar Example:";
@@ -37,3 +37,7 @@
         usleep(100000);
     }
     $phpCli->progressStop();
+    
+    //prompt the user for input
+    $this_is_my_name = $phpCli->promptInput("What is your name?");
+    echo "Hello, " . $this_is_my_name . '!' . PHP_EOL . PHP_EOL;
