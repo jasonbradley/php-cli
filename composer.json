@@ -4,7 +4,7 @@
     "keywords": ["cli","command-line"],
     "homepage": "http://github.com/thebra/php-cli",
     "type": "library",
-    "license": "Apache 2.0",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Jason Bradley",
