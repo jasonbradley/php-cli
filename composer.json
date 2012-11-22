@@ -12,7 +12,8 @@
         },
         {
             "name": "Floréal Toumikian",
-            "email": "floreal@gamned.com"
+            "email": "floreal@gamned.com",
+            "role": "Contributor"
         }
     ],
     "require": {
