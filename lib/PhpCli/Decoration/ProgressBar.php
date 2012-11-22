@@ -1,16 +1,18 @@
 <?php
-/**
- * PHP CLI Progress bar
- *
- * PHP 5
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright 2011, Andy Dawson
- * @link          http://ad7six.com
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
+  /**
+   * PHP CLI Progress bar
+   *
+   * PHP 5
+   *
+   * Licensed under The MIT License
+   * Redistributions of files must retain the above copyright notice.
+   *
+   * @copyright     Copyright 2011, Andy Dawson
+   * @link          http://ad7six.com
+   * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+   */
+
+namespace PhpCli\Decoration;
 
 /**
  * ProgressBar 

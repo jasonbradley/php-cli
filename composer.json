@@ -9,9 +9,21 @@
         {
             "name": "Jason Bradley",
             "email": "jason.bradley@gmail.com"
+        },
+        {
+            "name": "Floréal Toumikian",
+            "email": "floreal@gamned.com"
         }
     ],
     "require": {
         "php": ">=5.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*@stable"
+    },
+    "autoload": {
+        "psr-0": {
+            "PhpCli": "lib/"
+        }
     }
 }

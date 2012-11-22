@@ -1,8 +1,7 @@
 <?php
+namespace PhpCli;
 
-require_once(dirname(__FILE__).'/../PhpCli.class.php');
-
-class PhpCliTest extends PHPUnit_Framework_TestCase
+class PhpCliTest extends \PHPUnit_Framework_TestCase
 {
     public $testArgs = array();
     
@@ -55,7 +54,7 @@ class PhpCliTest extends PHPUnit_Framework_TestCase
     }
     
     /**
-     * @expectedException PhpCliException
+     * @expectedException \PhpCli\PhpCliException
      */
     public function testFlockThrowsException()
     {

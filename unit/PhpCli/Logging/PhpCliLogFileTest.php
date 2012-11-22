@@ -1,11 +1,10 @@
 <?php
-ini_set('display_errors',1);
-require_once(dirname(__FILE__).'/../logging/PhpCliLogFile.class.php');
+namespace PhpCli\Logging;
 
-class PhpCliLogFileTest extends PHPUnit_Framework_TestCase
+class PhpCliLogFileTest extends \PHPUnit_Framework_TestCase
 {    
     /**
-     * @expectedException PhpCliLogException
+     * @expectedException \PhpCli\Logging\PhpCliLogException
      */
     public function testInvalidBasePath()
     {
