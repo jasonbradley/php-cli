@@ -1,6 +1,5 @@
 <?php
-
-require_once(dirname(__FILE__).'/../logging/PhpCliLog.class.php');
+namespace PhpCli\Logging;
 
 class PhpCliLogFile extends PhpCliLog
 {
