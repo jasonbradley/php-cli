@@ -112,6 +112,10 @@
         {
             return $this->description;
         }
+
+        protected function hasValidArgumentRegExpression($regularExpression, $value) {
+            return (preg_match('/' . $regularExpression . '/', $value) == 1);
+        }
         
         /**
          * Determines if the arguments passed in match
@@ -134,6 +138,13 @@
                     {
                         if (!$this->hasArg($option[0]))
                         {
+                            return false;
+                        }
+                    }
+
+                    //check regular expression
+                    if (isset($option[3])) {
+                        if (!$this->hasValidArgumentRegExpression($option[3], $this->getArgValue($option[0]))) {
                             return false;
                         }
                     }

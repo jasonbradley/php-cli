@@ -5,7 +5,7 @@
     include('PhpCli.class.php');
 
     $options = array(array('v', 'Verbose Message', false),
-                     array('date', 'Date of Report (YYYY-MM-DD)', true));
+                     array('date', 'Date of Report (YYYY-MM-DD)', true, '[0-9]{4}-[0-9]{2}-[0-9]{2}'));
     
     $phpCli = new PhpCli($argv, $options, "This is an example script.");
     
