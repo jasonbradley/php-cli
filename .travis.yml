@@ -1,0 +1,6 @@
+language: php
+php:
+  - 5.0
+  - 5.1
+  - 5.2
+script: phpunit unit/* --coverage-text
