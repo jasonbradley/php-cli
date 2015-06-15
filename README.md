@@ -1,4 +1,4 @@
-php-cli
+php-cli ![alt tag](https://travis-ci.org/jasonbradley/php-cli.svg)
 =======
 
 A simple class to help make command line usage in PHP easier.
